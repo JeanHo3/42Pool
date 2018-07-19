@@ -1,0 +1,38 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2018/07/09 16:36:23 by jhourman          #+#    #+#             */
+/*   Updated: 2018/07/11 20:36:02 by jhourman         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int		ft_strlen(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+char	*ft_strcpy(char *dest, char *src)
+{
+	int idx;
+	int len;
+
+	idx = 0;
+	len = ft_strlen(src);
+	if (len <= ft_strlen(dest))
+		while (src[idx] != '\0')
+		{
+			dest[idx] = src[idx];
+			idx++;
+		}
+
+	return (dest);
+}
