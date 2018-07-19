@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_foreach.c                                       :+:      :+:    :+:   */
+/*   ft_list_push_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/17 21:43:08 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/19 13:23:02 by jhourman         ###   ########.fr       */
+/*   Created: 2018/07/19 18:27:42 by jhourman          #+#    #+#             */
+/*   Updated: 2018/07/19 19:35:24 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_foreach(int *tab, int length, void(*f)(int))
-{
-	int i;
+#include "ft_list.h"
 
-	i = 0;
-	while (i < length)
+void ft_list_push_back(t_list **begin_list, void *data)
+{
+	t_list *temp;
+	t_list *last;
+
+	last = *begin_list;
+	temp = ft_create_elem(data);
+	if (*begin_list == NULL)
+		*begin_list = temp;
+	else
 	{
-		f(tab[i]);
-		i++;
+		while(last->next != NULL)
+			last = last->next;
+		last->next = temp;
 	}
 }

@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_foreach.c                                       :+:      :+:    :+:   */
+/*   ft_list_last.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/17 21:43:08 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/19 13:23:02 by jhourman         ###   ########.fr       */
+/*   Created: 2018/07/19 20:00:33 by jhourman          #+#    #+#             */
+/*   Updated: 2018/07/19 20:10:19 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_foreach(int *tab, int length, void(*f)(int))
+t_list	*ft_list_last(t_list *begin_list)
 {
-	int i;
+	t_list	*last;
 
-	i = 0;
-	while (i < length)
+	last = begin_list;
+	if (begin_list == NULL)
+		return (begin_list);
+	else
 	{
-		f(tab[i]);
-		i++;
+		while (last->next != NULL)
+			last = last->next;
 	}
+	return (last);
 }

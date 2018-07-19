@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_foreach.c                                       :+:      :+:    :+:   */
+/*   ft_calculate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/17 21:43:08 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/19 13:23:02 by jhourman         ###   ########.fr       */
+/*   Created: 2018/07/19 15:46:03 by jhourman          #+#    #+#             */
+/*   Updated: 2018/07/19 16:12:13 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_foreach(int *tab, int length, void(*f)(int))
-{
-	int i;
+#include "do-op.h"
 
-	i = 0;
-	while (i < length)
-	{
-		f(tab[i]);
-		i++;
-	}
+int		ft_add(int nb1, int nb2)
+{
+	return (nb1 + nb2);
+}
+
+int		ft_sub(int nb1, int nb2)
+{
+	return (nb1 - nb2);
+}
+
+int		ft_div(int nb1,int nb2)
+{
+    return (nb1 / nb2);
+}
+
+int		ft_mod(int nb1,int nb2)
+{
+    return (nb1 % nb2);
+}
+
+int		ft_mul(int nb1,int nb2)
+{
+    return (nb1 * nb2);
 }

@@ -1,23 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_foreach.c                                       :+:      :+:    :+:   */
+/*   do_op.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/17 21:43:08 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/19 13:23:02 by jhourman         ###   ########.fr       */
+/*   Created: 2018/07/19 15:41:48 by jhourman          #+#    #+#             */
+/*   Updated: 2018/07/19 15:43:42 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_foreach(int *tab, int length, void(*f)(int))
-{
-	int i;
+#ifndef DO_OP_H
 
-	i = 0;
-	while (i < length)
-	{
-		f(tab[i]);
-		i++;
-	}
-}
+# define DO_OP_H
+
+int		ft_add(int nb1, int nb2);
+
+int		ft_sub(int nb1,int nb2);
+
+int		ft_div(int nb1,int nb2);
+
+int		ft_mod(int nb1,int nb2);
+
+int		ft_mul(int nb1,int nb2);
+
+#endif

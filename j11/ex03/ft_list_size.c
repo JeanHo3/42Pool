@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_foreach.c                                       :+:      :+:    :+:   */
+/*   ft_list_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/17 21:43:08 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/19 13:23:02 by jhourman         ###   ########.fr       */
+/*   Created: 2018/07/19 19:45:12 by jhourman          #+#    #+#             */
+/*   Updated: 2018/07/19 19:48:32 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_foreach(int *tab, int length, void(*f)(int))
-{
-	int i;
+#include <stdlib.h>
 
-	i = 0;
-	while (i < length)
+int ft_list_size(t_list *begin_list)
+{
+	int count;
+	t_list	*last;
+
+	count = 0;
+	last = begin_list;
+	while (last->next != NULL)
 	{
-		f(tab[i]);
-		i++;
+		last = last->next;
+		count++;
 	}
+	return (count);
 }

@@ -1,50 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_putany.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/18 08:45:10 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/18 09:07:14 by jhourman         ###   ########.fr       */
+/*   Created: 2018/07/19 16:04:59 by jhourman          #+#    #+#             */
+/*   Updated: 2018/07/19 16:12:52 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "do-op.h"
+#include <unistd.h>
 
-int		ft_sqrt(int nb);
-
-void	ft_putchar(char c);
-
-void	ft_putnbr(int nb);
-
-int		*ft_map(int *tab, int length, int(*f)(int))
+void	ft_putchar(char c)
 {
-	int i;
-	int *tabr;
-
-	i = 0;
-	tabr = (int*)malloc(sizeof(int) * length);
-	while (i < length)
-	{
-		tabr[i] = f(tab[i]);
-		i++;
-	}
-	return (tabr);
+	write(1, &c, 1);
 }
 
-int main (void)
+void	ft_putstr(char *str)
 {
-	int tab[] = {64, 25, 81, 100, 9, 16};
-	int len = 6;
-	int *tabr;
-	int i = 0;
+	int i;
 
-	tabr = ft_map(tab, len, &ft_sqrt);
-	while (i < len)
+	i = 0;
+	while (str[i] != '\0')
 	{
-		ft_putnbr(tabr[i]);
-		ft_putchar('\n');
+		ft_putchar(str[i]);
 		i++;
 	}
+}
+
+void	ft_putnbr(int nbr)
+{
+	long int a;
+
+	a = nbr;
+	if (a < 0)
+	{
+		ft_putchar('-');
+		a = -a;
+	}
+	if (a >= 10)
+	{
+		ft_putnbr(a / 10);
+		ft_putnbr(a % 10);
+	}
+	else
+		ft_putchar(a + 48);
 }

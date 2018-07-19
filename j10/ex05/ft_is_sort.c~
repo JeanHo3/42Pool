@@ -1,50 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_is_sort.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/18 08:45:10 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/18 09:07:14 by jhourman         ###   ########.fr       */
+/*   Created: 2018/07/19 13:29:22 by jhourman          #+#    #+#             */
+/*   Updated: 2018/07/19 13:40:52 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <stdio.h>
 
-int		ft_sqrt(int nb);
+int ft_intdiff(int nbr1, int nbr2)
+{
+	if (nbr1 < nbr2)
+		return (-1);
+	else if (nbr1 > nbr2)
+		return (1);
+	return (0);
+}
 
-void	ft_putchar(char c);
-
-void	ft_putnbr(int nb);
-
-int		*ft_map(int *tab, int length, int(*f)(int))
+int ft_is_sort(int *tab, int length, int(*f)(int, int))
 {
 	int i;
-	int *tabr;
-
+	int j;
+	
 	i = 0;
-	tabr = (int*)malloc(sizeof(int) * length);
-	while (i < length)
+	j = 0;
+	while (i < length - 1)
 	{
-		tabr[i] = f(tab[i]);
+		if(f(tab[i],tab[i+1]) >= 0)
+			return (0);
 		i++;
 	}
-	return (tabr);
+	return (1);
 }
 
 int main (void)
 {
-	int tab[] = {64, 25, 81, 100, 9, 16};
-	int len = 6;
-	int *tabr;
-	int i = 0;
+	int tab[5] = {15, 16, 17, 18, 19};
 
-	tabr = ft_map(tab, len, &ft_sqrt);
-	while (i < len)
-	{
-		ft_putnbr(tabr[i]);
-		ft_putchar('\n');
-		i++;
-	}
+	printf("%d", ft_is_sort(tab, 5, ft_intdiff));
 }
