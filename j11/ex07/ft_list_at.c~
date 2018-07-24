@@ -1,29 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_list_at.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/19 20:26:07 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/24 15:42:40 by jhourman         ###   ########.fr       */
+/*   Created: 2018/07/24 15:51:39 by jhourman          #+#    #+#             */
+/*   Updated: 2018/07/24 17:38:35 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 #include <stdlib.h>
 
-void	ft_list_clear(t_list **begin_list)
+t_list		*ft_list_at(t_list *begin_list, unsigned int nbr)
 {
-	t_list	*temp;
-	t_list	*next;
+	t_list	*nextit;
+	unsigned int i;
+	unsigned int nbrelem;
 
-	temp = (*begin_list);
-	while (temp)
+	nextit = begin_list;
+	i = 0;
+	nbrelem = 0;
+	if (nbr == 0)
+		return (NULL);
+	while (i < nbr - 1)
 	{
-		next = temp->next;
-		free(temp);
-		temp = next;
+		if (!nextit)
+			return (NULL);
+		else if (nextit->next)
+		{
+			nextit = nextit->next;
+			nbrelem++;
+		}
+		i++;
 	}
-	(*begin_list) = NULL;;
+	if(nbrelem < nbr - 1)
+		return (NULL);
+	return (nextit);
 }

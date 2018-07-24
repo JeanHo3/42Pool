@@ -6,7 +6,7 @@
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 17:39:44 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/19 18:13:03 by jhourman         ###   ########.fr       */
+/*   Updated: 2018/07/20 08:11:24 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,4 @@ void    ft_advanced_sort_wordtab(char **tab, int(*cmp)(char *, char *))
 			}
 		}
 	}
-}
-
-int main (void)
-{
-	
 }

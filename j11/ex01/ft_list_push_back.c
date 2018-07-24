@@ -6,11 +6,12 @@
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 18:27:42 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/19 19:35:24 by jhourman         ###   ########.fr       */
+/*   Updated: 2018/07/20 15:24:22 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
+#include <stdlib.h>
 
 void ft_list_push_back(t_list **begin_list, void *data)
 {

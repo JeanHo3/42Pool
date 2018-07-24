@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_calculate.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/19 20:26:07 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/24 15:42:40 by jhourman         ###   ########.fr       */
+/*   Created: 2018/07/19 15:46:03 by jhourman          #+#    #+#             */
+/*   Updated: 2018/07/19 16:12:13 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include <stdlib.h>
+#include "do-op.h"
 
-void	ft_list_clear(t_list **begin_list)
+int		ft_add(int nb1, int nb2)
 {
-	t_list	*temp;
-	t_list	*next;
+	return (nb1 + nb2);
+}
 
-	temp = (*begin_list);
-	while (temp)
-	{
-		next = temp->next;
-		free(temp);
-		temp = next;
-	}
-	(*begin_list) = NULL;;
+int		ft_sub(int nb1, int nb2)
+{
+	return (nb1 - nb2);
+}
+
+int		ft_div(int nb1,int nb2)
+{
+    return (nb1 / nb2);
+}
+
+int		ft_mod(int nb1,int nb2)
+{
+    return (nb1 % nb2);
+}
+
+int		ft_mul(int nb1,int nb2)
+{
+    return (nb1 * nb2);
 }

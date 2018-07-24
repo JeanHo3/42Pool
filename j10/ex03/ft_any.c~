@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_count_if.c                                      :+:      :+:    :+:   */
+/*   ft_any.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/18 09:20:56 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/22 22:06:34 by jhourman         ###   ########.fr       */
+/*   Created: 2018/07/18 09:09:27 by jhourman          #+#    #+#             */
+/*   Updated: 2018/07/22 22:01:19 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
-int ft_countwords(char *str)
+int		ft_countwords(char *str)
 {
 	int idx;
 	int word_size;
@@ -35,7 +34,7 @@ int ft_countwords(char *str)
 	return (nb_words);
 }
 
-char *ft_alloc_word(char *str, int *w_size, int *i)
+char	*ft_alloc_word(char *str, int *w_size, int *i)
 {
 	char*word;
 	int idxt;
@@ -62,7 +61,7 @@ char *ft_alloc_word(char *str, int *w_size, int *i)
 	return (word);
 }
 
-char **ft_split_whitespaces(char *str)
+char	**ft_split_whitespaces(char *str)
 {
 	int idx;
 	int idxt;
@@ -89,7 +88,7 @@ char **ft_split_whitespaces(char *str)
 	return (tab_words);
 }
 
-int ft_test(char *str)
+int		ft_test(char *str)
 {
 	int i = 0;
 
@@ -102,22 +101,17 @@ int ft_test(char *str)
 	return (0);
 }
 
-
-int ft_count_if(char **tab, int(*f)(char*))
+int		ft_any(char **tab, int(*f)(char*))
 {
-	int count;
-	int idx;
+	int i = 0;
 
-	idx = 0;
-	count = 0;
-	while(tab[idx] != 0)
+	while(tab[i] != 0)
 	{
-		
-		if(f(tab[idx]) == 1)
-			count++;
-		idx++;
+		if (f(tab[i]) == 1)
+			return (1);
+		i++;
 	}
-	return (count);
+	return (0);
 }
 
 int main (int ac, char **av)
@@ -127,7 +121,7 @@ int main (int ac, char **av)
 	if (ac == 2)
 	{
 		tab1 = ft_split_whitespaces(av[1]);
-		printf("%d", ft_count_if(tab1, &ft_test));
+		ft_any(tab1, &ft_test);
 	}
 	return (0);
 }

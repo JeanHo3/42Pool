@@ -6,17 +6,18 @@
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/18 08:45:10 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/18 09:07:14 by jhourman         ###   ########.fr       */
+/*   Updated: 2018/07/22 21:50:06 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
 
-int		ft_sqrt(int nb);
 
-void	ft_putchar(char c);
-
-void	ft_putnbr(int nb);
+int		ft_any(int nbr)
+{
+	return (nbr+nbr);
+}
 
 int		*ft_map(int *tab, int length, int(*f)(int))
 {
@@ -35,16 +36,17 @@ int		*ft_map(int *tab, int length, int(*f)(int))
 
 int main (void)
 {
-	int tab[] = {64, 25, 81, 100, 9, 16};
-	int len = 6;
-	int *tabr;
+	int tab[10] = {1,2,3,4,5,6,7,8,9,10};
+	int *res;
 	int i = 0;
 
-	tabr = ft_map(tab, len, &ft_sqrt);
-	while (i < len)
+	res = NULL;
+	res = ft_map(tab, 10, &ft_any);
+	
+	while (i < 10)
 	{
-		ft_putnbr(tabr[i]);
-		ft_putchar('\n');
+		printf("%d\n", res[i]);
 		i++;
 	}
+	return (0);
 }

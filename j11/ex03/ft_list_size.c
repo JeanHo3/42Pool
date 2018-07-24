@@ -6,10 +6,11 @@
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 19:45:12 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/19 19:48:32 by jhourman         ###   ########.fr       */
+/*   Updated: 2018/07/20 15:29:31 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_list.h"
 #include <stdlib.h>
 
 int ft_list_size(t_list *begin_list)
@@ -24,5 +25,5 @@ int ft_list_size(t_list *begin_list)
 		last = last->next;
 		count++;
 	}
-	return (count);
+	return (count + 1);
 }

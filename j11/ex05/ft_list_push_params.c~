@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_list_push_params.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/19 20:26:07 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/24 15:42:40 by jhourman         ###   ########.fr       */
+/*   Created: 2018/07/19 20:10:39 by jhourman          #+#    #+#             */
+/*   Updated: 2018/07/24 13:58:48 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_list.h"
 #include <stdlib.h>
 
-void	ft_list_clear(t_list **begin_list)
+t_list	*ft_list_push_params(int ac, char **av)
 {
-	t_list	*temp;
-	t_list	*next;
+	t_list *list;
+	int i;
 
-	temp = (*begin_list);
-	while (temp)
+	i = 0;
+	list = NULL;
+	if (ac >= 2)
 	{
-		next = temp->next;
-		free(temp);
-		temp = next;
+		while (i < ac - 1)
+		{
+			ft_list_push_front(&list, av[i - 1]);
+			i++;
+		}
+		return (list);
 	}
-	(*begin_list) = NULL;;
+	return (NULL);
 }

@@ -1,29 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_putany.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/19 20:26:07 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/24 15:42:40 by jhourman         ###   ########.fr       */
+/*   Created: 2018/07/19 16:04:59 by jhourman          #+#    #+#             */
+/*   Updated: 2018/07/19 16:12:52 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include <stdlib.h>
+#include "do-op.h"
+#include <unistd.h>
 
-void	ft_list_clear(t_list **begin_list)
+void	ft_putchar(char c)
 {
-	t_list	*temp;
-	t_list	*next;
+	write(1, &c, 1);
+}
 
-	temp = (*begin_list);
-	while (temp)
+void	ft_putstr(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
 	{
-		next = temp->next;
-		free(temp);
-		temp = next;
+		ft_putchar(str[i]);
+		i++;
 	}
-	(*begin_list) = NULL;;
+}
+
+void	ft_putnbr(int nbr)
+{
+	long int a;
+
+	a = nbr;
+	if (a < 0)
+	{
+		ft_putchar('-');
+		a = -a;
+	}
+	if (a >= 10)
+	{
+		ft_putnbr(a / 10);
+		ft_putnbr(a % 10);
+	}
+	else
+		ft_putchar(a + 48);
 }

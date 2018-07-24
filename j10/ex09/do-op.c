@@ -6,12 +6,12 @@
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 13:41:58 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/21 10:15:09 by jhourman         ###   ########.fr       */
+/*   Updated: 2018/07/20 13:46:55 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "do-op.h"
-#include <stdio.h>
+#include "ft_opp.h"
 
 int		ft_strcmp(char *s1, char *s2)
 {
@@ -51,36 +51,56 @@ int		ft_atoi(char *str)
 		return (nbr);
 }
 
-int		main (int argc, char **argv)
+int		ft_usage(int valid_opp, int b)
 {
-	int (*f[5])(int a, int b) = {ft_add, ft_sub, ft_div, ft_mod, ft_mul};
+	int i;
 
-	if (argc == 4)
+	i = 0;
+	if (valid_opp == 0 && b == 0)
 	{
-		if (ft_strcmp(argv[2],"+") != 0 && ft_strcmp(argv[2],"-") != 0 &&
-			ft_strcmp(argv[2],"/") != 0 && ft_strcmp(argv[2],"*") != 0 && ft_strcmp(argv[2],"%") != 0)
-			ft_putchar('0');
-		else if (ft_strcmp(argv[2],"+") == 0)
-			ft_putnbr(f[0](ft_atoi(argv[1]),ft_atoi(argv[3])));
-		else if (ft_strcmp(argv[2],"-") == 0)
-			ft_putnbr(f[1](ft_atoi(argv[1]),ft_atoi(argv[3])));
-		else if (ft_strcmp(argv[2],"/") == 0)
+		ft_putstr("error : only [ ");
+		while (g_opptab[i].opp)
 		{
-			if (ft_strcmp(argv[3],"0") == 0)
-				ft_putstr("Stop : division by zero");
-			else
-				ft_putnbr(f[2](ft_atoi(argv[1]),ft_atoi(argv[3])));
+			if (!(ft_strcmp(g_opptab[i].opp,"") == 0))
+			{
+				ft_putstr(g_opptab[i].opp);
+				ft_putchar(' ');
+			}
+			i++;
 		}
-		else if (ft_strcmp(argv[2],"%") == 0)
+		ft_putstr("] are accepted.");
+	}
+	return (1);
+}
+
+void	ft_isopp(char **av)
+{
+	int valid_opp;
+	int i;
+
+	i = 0;
+	valid_opp = 0;
+	while (g_opptab[i].opp)
+	{
+		if (ft_strcmp(av[2],g_opptab[i].opp) == 0)
 		{
-			if (ft_strcmp(argv[3],"0") == 0)
+			valid_opp = 1;
+			if (ft_strcmp(g_opptab[i].opp,"/") && ft_strcmp(av[3],"0") == 0)
+				ft_putstr("Stop : division by zero");
+			else if (ft_strcmp(g_opptab[i].opp,"%") && ft_strcmp(av[3],"0") == 0)
 				ft_putstr("Stop : modulo by zero");
 			else
-				ft_putnbr(f[3](ft_atoi(argv[1]),ft_atoi(argv[3])));
+				ft_putnbr(g_opptab[i].f(ft_atoi(av[1]),ft_atoi(av[3])));
 		}
-		else if (ft_strcmp(argv[2],"*") == 0)
-			ft_putnbr(f[4](ft_atoi(argv[1]),ft_atoi(argv[3])));
+		i++;
 	}
-	ft_putchar('\n');
+	if (valid_opp == 0)
+		i = ft_usage(valid_opp,0);
+}
+
+int		main (int argc, char **argv)
+{
+	if (argc == 4)
+		ft_isopp(argv);
 	return (0);
 }

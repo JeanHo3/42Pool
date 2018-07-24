@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_clear.c                                    :+:      :+:    :+:   */
+/*   ft_list_last.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/19 20:26:07 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/24 15:42:40 by jhourman         ###   ########.fr       */
+/*   Created: 2018/07/19 20:00:33 by jhourman          #+#    #+#             */
+/*   Updated: 2018/07/19 20:10:19 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_list.h"
-#include <stdlib.h>
-
-void	ft_list_clear(t_list **begin_list)
+t_list	*ft_list_last(t_list *begin_list)
 {
-	t_list	*temp;
-	t_list	*next;
+	t_list	*last;
 
-	temp = (*begin_list);
-	while (temp)
+	last = begin_list;
+	if (begin_list == NULL)
+		return (begin_list);
+	else
 	{
-		next = temp->next;
-		free(temp);
-		temp = next;
+		while (last->next != NULL)
+			last = last->next;
 	}
-	(*begin_list) = NULL;;
+	return (last);
 }

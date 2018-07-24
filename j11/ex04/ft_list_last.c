@@ -6,9 +6,12 @@
 /*   By: jhourman <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/07/19 20:00:33 by jhourman          #+#    #+#             */
-/*   Updated: 2018/07/19 20:10:19 by jhourman         ###   ########.fr       */
+/*   Updated: 2018/07/20 15:40:18 by jhourman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include <stdlib.h>
+#include "ft_list.h"
 
 t_list	*ft_list_last(t_list *begin_list)
 {
