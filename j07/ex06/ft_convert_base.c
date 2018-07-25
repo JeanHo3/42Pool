@@ -12,7 +12,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
+/*
+** ft_strlen : renvoi la longueur de la chaine str
+*/
 int		ft_sl(char *str)
 {
 	int i;
@@ -24,6 +28,10 @@ int		ft_sl(char *str)
 	}
 	return (i);
 }
+
+/*
+** ft_rp : recursive power pour calculer le (base_size)^n
+*/
 
 int		ft_rp(int nb, int power)
 {
@@ -41,6 +49,10 @@ int		ft_rp(int nb, int power)
 	return (res);
 }
 
+/*
+** ft_bdiv : retourne le n maximal de la puissance de la base_to_size qui rentre dans le nombre
+*/
+
 int		ft_bdiv(int nbr, int btsize)
 {
 	int div;
@@ -55,6 +67,10 @@ int		ft_bdiv(int nbr, int btsize)
 	}
 	return (div);
 }
+
+/*
+** ft_c10 : calcule la valeur decimale du nombre dans sa base from
+*/
 
 int		ft_c10(char *nbr, char *base_from, int bfsize)
 {
@@ -92,11 +108,11 @@ char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 	int		j;
 	int		i;
 
-	i = 0;
+	i = -1;
 	ca = ft_c10(nbr, base_from, ft_sl(base_from));
-	bdiv = ft_bdiv(ca, ft_sl(base_to)) - 1;
-	result = (char*)malloc(sizeof(char) * bdiv);
-	result[bdiv + 1] = '\0';
+	bdiv = ft_bdiv(ca, ft_sl(base_to));
+	result = (char*)malloc(sizeof(char) * bdiv + 1);
+	result[bdiv] = '\0';
 	j = ft_sl(base_to);
 	while (ca > 0)
 	{
